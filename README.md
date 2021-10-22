@@ -53,7 +53,7 @@ Prepare yourself for a discussion of your implementation.
 
 ## Tests
 As usual, you are provided with several tests to check the correct functionality of your implementation. These will warn you about memory issues giving you some hints where the problems may be. The tests are
-- TestA_desctructor
+- TestA_destructor
 - TestB_copyConstructor
 - TestC_moveConstructor
 
