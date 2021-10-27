@@ -1,4 +1,4 @@
-#include <vector.hpp>
+#include "vector.hpp"
 
 // default constructor
 Vector::Vector() {}
@@ -18,8 +18,10 @@ Vector::value_type &Vector::operator[](size_type pos) { return _data[pos]; }
 
 // -------------------- YOUR IMPLEMENTATION STARTS HERE ---------------------
 // copy constructor
-Vector::Vector(const Vector &vec) = default;
+Vector::Vector(const Vector &other) = default;
+
 //move constructor
 Vector::Vector(Vector &&other) = default;
+
 // destructor
 Vector::~Vector() = default;

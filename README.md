@@ -5,24 +5,22 @@ For the submission of this exercise your solution must be in a Gitea repository 
 
 ## Task description
 
-This exercise deals with a `Vector` type which implements the functionality of an std::vector.
+This exercise deals with a `Vector` type which implements parts of the functionality of an std::vector.
 
-A defective implementation of the `Vector` class is provided in `vector.cpp` with the class declaration in `vector.hpp`.
-It is your task to change the *defaulted* implementations of
-1. the copy constructor
-1. the move constructor
-1. the destructor
-
-of `Vector` to match the demands for this resource owning type. 
+A defective implementation of the `Vector` class is provided in `vector.cpp` with the class declaration in `vector.hpp`. The class is defective w.r.t. to the *defaulted* implementations of 
+1. the copy constructor, 
+1. the move constructor, and
+1. the destructor.
+It is your task to change these three *defaulted* special member functions of `Vector` to match the demands for this resource owning type.
 
 **You should only change code of these three special member functions in `vector.cpp`**, with all other functions already defined for you:
 
 ```C++
-#include <vector.hpp>
+#include "vector.hpp"
 
 // default constructor
 Vector::Vector() {}
-// Constructor
+// constructor
 Vector::Vector(size_type size, const value_type &value)
     : _size(size), _data(new Vector::value_type[size]) { // NOTE that some memory is allocated here!
   for (std::size_t i = 0; i < _size; ++i) {
@@ -38,7 +36,7 @@ Vector::value_type &Vector::operator[](size_type pos) { return _data[pos]; }
 
 // -------------------- YOUR IMPLEMENTATION STARTS HERE ---------------------
 // copy constructor
-Vector::Vector(const Vector &vec) = default; // (1) implement correct copy constructor here
+Vector::Vector(const Vector &other) = default; // (1) implement correct copy constructor here
 
 // move constructor
 Vector::Vector(Vector &&other) = default;    // (2) implement correct move constructor here
@@ -58,28 +56,28 @@ As usual, you are provided with several tests to check the correct functionality
 - TestC_moveConstructor
 
 ## Benchmarking
-For testing your implementation and its performance, a benchmark is provided in `src/benchmarking.cpp`. 
+For testing your implementation and its performance, a benchmark is provided in `src/benchmark.cpp`. 
 
 It provides you with hints about the memory location of the allocated data. The initial output reflects how the copy and move constructors do not behave as expected for the data structure:
 ```
 Copy:
-Old Data before  | New data after   | Old Data after
+Old data before  | New data after   | Old data after
   0x7f0b8f88a010 |   0x7f0b8f88a010 | 0x7f0b8f88a010     
 # When old data is copied into new data, they should have different memory locations
 
 Move:
-Old Data before  | New data after   | Old Data after
+Old data before  | New data after   | Old Data after
   0x7f0b8f88a010 |   0x7f0b8f88a010 | 0x7f0b8f88a010
   # When old data is copied into new data, old data should not know about the memory location any more
 ```
 
-The executable also measures the runtime of the different constructors:
+The executable also measures the runtime of the different constructors. 
+For the *defaulted* special member functions, the runtime comparison is not yet meaningful; the output looks similar to this:
 ```
 Copy constructor Vector(const Vector&)  called as Vector(vec)             4.90e-08 s
 Move constructor Vector(Vector&&)       called as Vector(std::move(vec))  9.92e-08 s
 ```
-You can expect the move constructor to be faster by about a factor of 10 for this data structure, so the results shown above for the initial setup are clearly wrong.
-
+After corretly impelementing all constructors you can expect the move construction to be much faster (in this setup about an order of magnitude) than the copy constructor.
 
 ## Sanitizing
 The provided `CMakeLists.txt` builds the benchmark and turns on the AddressSanitizer (gcc/clang) to detect memory related problems (e.g., leaks and out-of-bound access). 

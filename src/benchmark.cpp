@@ -47,10 +47,10 @@ int main() {
   std::cout << std::setprecision(2);
 
   std::cout << "Copy:\n";
-  std::cout << "Old Data before  | New data after   | Old Data after\n";
+  std::cout << "Old data before  | New data after   | Old Data after\n";
   auto copyTime = runtest<false>(initialValues);
   std::cout << "Move:\n";
-  std::cout << "Old Data before  | New data after   | Old Data after\n";
+  std::cout << "Old data before  | New data after   | Old Data after\n";
   auto moveTime = runtest<true>(initialValues);
 
   std::cout << "\nRuntimes of constructing vector objects:\n\n";

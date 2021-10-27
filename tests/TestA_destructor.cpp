@@ -17,7 +17,7 @@ int main() {
   // finishes since there is still some memory
   // allocated in the end.
 
-  // NOTE: there is no way to check this directly
+  // NOTE: there is no way to check this at compile time
   // in C++, which is why we need to be very
   // careful with pointers
   

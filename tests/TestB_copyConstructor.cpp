@@ -19,7 +19,6 @@ int main() {
   // check that original size is still the same
   TEST_ASSERT(size == vec.size(), "Original vector has changed in size during copy");
 
-
   // check whether the data was really copied
   TEST_ASSERT(vec.data() != newVec.data(), "Data should not alias");
 

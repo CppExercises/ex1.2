@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.0)
 set(CMAKE_EXPORT_COMPILE_COMMANDS true CACHE BOOL "")
 set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "Choose the type of build.")
 
-project(Ex0 LANGUAGES CXX)
+project(Ex1.2 LANGUAGES CXX)
 
 #set the required CPP standard for the project
 set(CMAKE_CXX_STANDARD 17)
@@ -35,15 +35,9 @@ file(GLOB MY_LIBRARY_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/lib/*.cpp")
 set(MY_LIBRARY_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 # build the library
-if(MY_LIBRARY_SOURCES)
-  message(STATUS "Building shared library")
-  add_library(${MY_LIBRARY} SHARED ${MY_LIBRARY_SOURCES})
-  target_include_directories(${MY_LIBRARY} PUBLIC "${MY_LIBRARY_INCLUDE_DIRS}")
-else(MY_LIBRARY_SOURCES)
-  message(STATUS "Building header-only library")
-  add_library(${MY_LIBRARY} INTERFACE)
-  target_include_directories(${MY_LIBRARY} INTERFACE "${MY_LIBRARY_INCLUDE_DIRS}")
-endif(MY_LIBRARY_SOURCES)
+message(STATUS "Building shared library")
+add_library(${MY_LIBRARY} SHARED ${MY_LIBRARY_SOURCES})
+target_include_directories(${MY_LIBRARY} PUBLIC "${MY_LIBRARY_INCLUDE_DIRS}")
 
 # by default tests are built, but this can be turned off using: cmake -DBUILD_TESTS=OFF ..
 option(BUILD_TESTS "Build unit tests." ON)
@@ -54,7 +48,7 @@ if(BUILD_TESTS)
   add_subdirectory("tests")
 endif()
 
-# Now build additional target to execute benchmarks of the different types of implementations
+# Now build additional target to execute benchmarks
 option(BUILD_BENCHMARK "Build the benchmark" ON)
 if(BUILD_BENCHMARK)
   set(BENCHMARK_NAME "benchmark")
