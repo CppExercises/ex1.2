@@ -1,5 +1,5 @@
 # Exercise EX1.2
-This exercise is **part 2** of 3 of EX1. See also [Item 000](https://cppitems.github.io/#/item/000) for an overview and deadlines. The submission deadline for EX1 (all three parts) is **Mo 08.11.2020, 4pm**. The sources related to EX1.2 are available at [https://github.com/cppitems/ex1.2](https://github.com/cppitems/ex1.2).
+This exercise is **part 2** of 3 of EX1. See also [Item 000](https://cppitems.github.io/#/item/000) for an overview and deadlines. The submission deadline for EX1 (all three parts) is **Mo 08.11.2021, 4pm**. The sources related to EX1.2 are available at [https://github.com/cppitems/ex1.2](https://github.com/cppitems/ex1.2).
 
 For the submission of this exercise your solution must be in a Gitea repository called **ex1.2** by the above deadline.
 
