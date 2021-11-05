@@ -3,6 +3,25 @@ This exercise is **part 2** of 3 of EX1. See also [Item 000](https://cppitems.gi
 
 For the submission of this exercise your solution must be in a Gitea repository called **ex1.2** by the above deadline.
 
+## Running Result
+
+```bash
+wang@wang-virtual-machine:~/Documents/ex1.2/build$ ./benchmark 
+Copy:
+Old data before  | New data after   | Old Data after
+  0x7f8892849800 |   0x7f8886981800 | 0x7f8892849800
+
+Move:
+Old data before  | New data after   | Old Data after
+  0x7f8888fa9800 |   0x7f8888fa9800 | 0
+
+
+Runtimes of constructing vector objects:
+
+Copy constructor Vector(const Vector&)  called as Vector(vec)             2.73e-02 s
+Move constructor Vector(Vector&&)       called as Vector(std::move(vec))  3.48e-03 s
+```
+
 ## Task description
 
 This exercise deals with a `Vector` type which implements parts of the functionality of an std::vector.
